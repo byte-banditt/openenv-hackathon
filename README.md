@@ -19,7 +19,6 @@ OpenEnv benchmark for **Theme #2: (Super) Long-Horizon Planning & Instruction Fo
 - Trained adapter (GRPO LoRA, 1.5B): https://huggingface.co/pixxel-phantom/orbital-thruster-grpo-fast
 - Trained adapter (GRPO LoRA, 4B): https://huggingface.co/pixxel-phantom/orbital-thruster-grpo
 - Mini-blog / write-up: https://huggingface.co/spaces/pixxel-phantom/orbital-thruster-env/blob/main/BLOG.md
-- Trained adapter (GRPO LoRA): https://huggingface.co/pixxel-phantom/orbital-thruster-grpo-fast
 - Training notebook: [`training/train_orbital_grpo.ipynb`](training/train_orbital_grpo.ipynb)
 
 
@@ -207,12 +206,11 @@ Training-only deps: [training/requirements.txt](training/requirements.txt).
 | Random | 23.9 / fail | 3.2 / fail | −25.3 / fail | −53.5 / fail | 90.0 | 0 |
 | Deterministic PD | 17.6 / **pass** | 97.4 / fail | 21.1 / fail | 89.8 / fail | 90.0 | 2 |
 | Tuned PD | 34.2 / **pass** | **120.1 / pass** | 27.5 / fail | **115.8 / fail** | 88.8 | 0 |
-| **Trained (GRPO, 1.5B)** — fast L4 run | 9.2 | 38.3 | **88.0** | 22.6 | 0.0 | 0 |
 | **Trained (GRPO, 7B)** — headline A100 run | 12.4 | 33.3 | **43.8** | 11.0 | 90.0 | 0 |
 
 ![Trained model vs baseline policies across all tasks](outputs/eval_trained/trained_vs_baseline.png)
 
-*Trained vs baselines: reward totals per task. The 7B trained model still beats every heuristic on `long_horizon_precision_hold` (43.8 vs 27.5 tuned PD), and now uses non-zero fuel on every task (52.8–120 across the four tasks vs 0.0 for the 1.5B run) — proving the policy actively explores rather than collapsing to passive `HOLD_POSITION`. The flagship score is still below tuned PD, which is the next item to address.*
+*Trained vs baselines: reward totals per task. The 7B trained model still beats every heuristic on `long_horizon_precision_hold` (43.8 vs 27.5 tuned PD), and uses non-zero fuel on every task (52.8–120 across the four tasks) — proving the policy actively explores rather than collapsing to passive `HOLD_POSITION`. The flagship score is still below tuned PD, which is the next item to address.*
 
 ### Key Observations
 
